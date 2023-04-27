@@ -1,11 +1,18 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter as Router } from "react-router-dom";
-import App from "./components/App";
+import { Redirect } from "react-router-dom";
 
-ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
-  document.getElementById("root")
-);
+function MyComponent({ isAuthenticated }) {
+  if (!isAuthenticated) {
+    // If the user is not authenticated, redirect to the login page
+    return <Redirect to="/login" />;
+  }
+
+  // If the user is authenticated, render the component as normal
+  return (
+    <div>
+      <h1>Welcome!</h1>
+      <p>You are logged in.</p>
+    </div>
+  );
+}
+
+
